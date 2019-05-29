@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!--스크롤뷰 안에는 오직 1개의 View만 추가가 가능함-->
+    <!--여러개를 추가하려면 안에 Layout같은 ViewGroup을 놓고 그 안에 View들을 추가해야함-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <!-- 스크롤뷰안에 있는 View의 height은 값을 어떻게 지정하던지 무조건 wrap_content로 됨-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#ff0000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#00ff00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#0000ff"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--수평방향의 스크롤뷰는 별도의 클래스로 존재함-->
+    <HorizontalScrollView
+        android:layout_marginTop="16dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp">
+
+        <!-- HorizontalScrollView의 경우 안에 있는 뷰의 width값이 무조건 wrap_content로 됨-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="#ff0000"/>
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="#00ff00"/>
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="#0000ff"/>
+
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+    <!-- 수평, 수직 모두 스크롤되게 하려면 중첩스크롤 구조로 만들면 됨-->
+    <ScrollView
+        android:layout_marginTop="16dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/sv">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/penguins"/>
+
+        </HorizontalScrollView>
+
+    </ScrollView>
+
+    <!-- 스크롤뷰의 스크롤 위치를 Java코드를 통해 마지막으로 이동시키기-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="스크롤을 마지막으로"
+        android:onClick="clickBtn"/>
+
+
+
+</LinearLayout>
